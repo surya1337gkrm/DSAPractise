@@ -34,7 +34,7 @@ var hasCycle = function(head) {
             head = head.next
         }
     }
-    // reached the end of the linked list
+    // reached the end of the linked list 
     return false
 
 
