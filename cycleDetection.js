@@ -99,7 +99,7 @@ const isCycleWithDFS = (V, edges) => {
     visited[node] = true;
     for (const neighbor of graph[node] || []) {
       if (!visited[neighbor]) {
-        return dfs(neighbor, node) === true;
+        if (dfs(neighbor, node)) return true;
       } else if (parent !== neighbor) {
         return true;
       }
