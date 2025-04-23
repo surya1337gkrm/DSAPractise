@@ -51,6 +51,17 @@ var ladderLength = function (beginWord, endWord, wordList) {
   return 0;
 };
 
-
-console.log(ladderLength(beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log","cog"]))
-console.log(ladderLength(beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log"]))
+console.log(
+  ladderLength(
+    (beginWord = 'hit'),
+    (endWord = 'cog'),
+    (wordList = ['hot', 'dot', 'dog', 'lot', 'log', 'cog'])
+  )
+);
+console.log(
+  ladderLength(
+    (beginWord = 'hit'),
+    (endWord = 'cog'),
+    (wordList = ['hot', 'dot', 'dog', 'lot', 'log'])
+  )
+);
