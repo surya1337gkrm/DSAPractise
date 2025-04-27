@@ -75,3 +75,76 @@ console.log(
     ])
   )
 );
+
+// we can get the same topological sort using BFS
+// using Kahn's Algorithm.
+// Approach: We use a inDegree array to store the incoming edges for a node
+// and we start with the nodes that doesnt have any incoming edges;
+
+// if there arent any incoming edges: that means this node doesnt have any prerequesites
+// so we can add it to the queue and start exploring its neighbors.
+// we mark the node as visited and decrease the inDegree of its neighbors by 1.
+// if the inDegree of a neighbor becomes 0, that means this neighbor has no more incoming edges
+// so we can add it to the queue and start exploring its neighbors.
+
+const topoSort_withKahnsAlgorithm = (V, edges) => {
+  const output = [];
+  const graph = new Map();
+  const inDegree = new Array(V).fill(0);
+
+  // construct the graph and inDegree array
+  for (let [a, b] of edges) {
+    if (!graph.has(a)) graph[a] = [];
+    if (!graph.has(b)) graph[b] = [];
+    graph.get(a).push(b);
+    inDegree[b]++;
+  }
+
+  // we dont have to iterate through all the nodes as initially all nodes has inDegree value as 0
+  // and only nodes which has incoming nodes will be incremented and also we dont need a visited array
+  // as we use the inDegree value to push the next node to the queue
+  const queue = [];
+  for (let i = 0; i < V; i++) {
+    if (inDegree[i] === 0) {
+      queue.push(i);
+    }
+  }
+
+  while (queue.length > 0) {
+    const node = queue.shift();
+    output.push(node);
+    for (let neighbor of graph.get(node) || []) {
+      inDegree[neighbor]--;
+      if (inDegree[neighbor] === 0) {
+        queue.push(neighbor);
+      }
+    }
+  }
+
+  return output;
+};
+console.log(
+  'With Kahns Algo: ',
+  topoSort(
+    (V = 4),
+    (edges = [
+      [3, 0],
+      [1, 0],
+      [2, 0],
+    ])
+  )
+);
+console.log(
+  'With Kahns Algo: ',
+  topoSort(
+    (V = 6),
+    (edges = [
+      [1, 3],
+      [2, 3],
+      [4, 1],
+      [4, 0],
+      [5, 0],
+      [5, 2],
+    ])
+  )
+);
