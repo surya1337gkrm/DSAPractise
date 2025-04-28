@@ -19,7 +19,7 @@ var canFinish = function (numCourses, prerequisites) {
     if (!graph.has(a)) graph.set(a, []);
     if (!graph.has(b)) graph.set(b, []);
 
-    graph.get(a).push(b);
+    graph.get(b).push(a); // [a,b] b has to be taken in order to take a so its b->a (a has a dependency on b)
   }
 
   // takes each node and check if its already visited
@@ -70,8 +70,8 @@ var canFinish_withBFS = (numCourses, prerequisites) => {
     if (!graph.has(a)) graph.set(a, []);
     if (!graph.has(b)) graph.set(b, []);
 
-    graph.get(a).push(b);
-    inDegree[b]++;
+    graph.get(b).push(a); // a has dependency on  b | b->a 
+    inDegree[a]++; // a has incoming edge
   }
 
   const queue = [];
