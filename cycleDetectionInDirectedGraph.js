@@ -32,7 +32,7 @@ var isCyclic = (V, edges) => {
     if (visited[i] === 2) return false;
     visited[i] = 1;
     for (let neighbor of graph[i]) {
-      if (dfs(neighbor)===true) {
+      if (dfs(neighbor) === true) {
         return true;
       }
     }
@@ -48,9 +48,83 @@ var isCyclic = (V, edges) => {
       }
     }
   }
-  return false
+  return false;
 };
 
+console.log(
+  isCyclic(4, [
+    [0, 1],
+    [0, 2],
+    [1, 2],
+    [2, 0],
+    [2, 3],
+  ])
+);
+console.log(
+  isCyclic(4, [
+    [0, 1],
+    [0, 2],
+    [1, 2],
+    [2, 3],
+  ])
+);
 
-console.log(isCyclic(4, [[0, 1], [0, 2], [1, 2], [2, 0], [2, 3]]));
-console.log(isCyclic(4,[[0, 1], [0, 2], [1, 2], [2, 3]]))
+var isCyclic_withBFS = (V, edges) => {
+  // Approach: Use BFS to detect the cycle in the graph
+  // We can use Kahn's algorithm to find a topological sort for the given graph
+  // If there's a cycle in the graph, the topological sort will not be possible
+  // as Topological sort will be possible only for Directed Acyclic Graphs(DAG)
+  // if the sort is present, length of the topo sort will be same as the number of nodes in the graph.
+
+  // construct the graph and the inDegree array
+  const graph = new Map();
+  const inDegree = new Array(V).fill(0);
+
+  // construct the graph & inDegree array
+  for (const [a, b] of edges) {
+    if (!graph.has(a)) graph.set(a, []);
+    if (!graph.has(b)) graph.set(b, []);
+    graph.get(a).push(b);
+    inDegree[b]++;
+  }
+
+  const queue = [];
+  // now push the nodes with no incoming edges to the queue
+  for (let i = 0; i < V; i++) {
+    if (inDegree[i] === 0) queue.push(i);
+  }
+
+  const topoSort = [];
+  while (queue.length > 0) {
+    const node = queue.shift();
+    topoSort.push(node);
+
+    // once the edge is explored decrese the indegree for each neighbor
+    for (const neighbor of graph.get(node) || []) {
+      inDegree[neighbor]--;
+      if (inDegree[neighbor] === 0) queue.push(neighbor);
+    }
+  }
+  // by the end if thr topoSort.length!==V then there's a cycle
+  return topoSort.length !== V;
+};
+
+console.log(
+  'With Kahns Algo: ',
+  isCyclic_withBFS(4, [
+    [0, 1],
+    [0, 2],
+    [1, 2],
+    [2, 0],
+    [2, 3],
+  ])
+);
+console.log(
+  'With Kahns Algo: ',
+  isCyclic_withBFS(4, [
+    [0, 1],
+    [0, 2],
+    [1, 2],
+    [2, 3],
+  ])
+);
