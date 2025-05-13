@@ -178,3 +178,86 @@ console.log(
     (k = 0)
   )
 );
+
+var findCheapestPriceV2 = function (n, flights, src, dst, k) {
+  // Approach 02: As we are traversing based on the steps(minimum) and incrementing by 1
+  // during each step: which is simillar to the BFS Approach - we can just use Queue instead of a PQ.
+
+  // construct the graph
+  const graph = new Map();
+  const priceArr = new Array() * n.fill(Infinity);
+
+  for (const [start, dest, cost] of flights) {
+    if (!graph.has(start)) {
+      graph.set(start, []);
+    }
+    graph.get(start).push([dest, cost]);
+  }
+
+  const queue = [];
+  queue.push([src, 0, 0]);
+  let index = 0;
+  while (index < queue.length) {
+    //console.log(queue)
+    const [node, cost, stops] = queue[index];
+    index++;
+
+    if (stops > k) continue;
+    if (node === dst) continue;
+
+    for (const [nextNode, nextCost] of graph.get(node) || []) {
+      if (cost + nextCost < priceArr[nextNode]) {
+        priceArr[nextNode] = cost + nextCost;
+        queue.push([nextNode, cost + nextCost, stops + 1]);
+      }
+    }
+  }
+
+  return priceArr[dst] === Infinity ? -1 : priceArr[dst];
+};
+
+console.log(
+  'V2:',
+  findCheapestPrice(
+    (n = 4),
+    (flights = [
+      [0, 1, 100],
+      [1, 2, 100],
+      [2, 0, 100],
+      [1, 3, 600],
+      [2, 3, 200],
+    ]),
+    (src = 0),
+    (dst = 3),
+    (k = 1)
+  )
+);
+
+console.log(
+  'V2:',
+  findCheapestPrice(
+    (n = 3),
+    (flights = [
+      [0, 1, 100],
+      [1, 2, 100],
+      [0, 2, 500],
+    ]),
+    (src = 0),
+    (dst = 2),
+    (k = 1)
+  )
+);
+console.log(
+  'V2:',
+  findCheapestPrice(
+    (n = 3),
+    (flights = [
+      [0, 1, 100],
+      [1, 2, 100],
+      [0, 2, 500],
+    ]),
+    (src = 0),
+    (dst = 2),
+    (k = 0)
+  )
+);
