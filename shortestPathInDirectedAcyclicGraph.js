@@ -89,7 +89,7 @@ const shortestPathV2 = (V, E, edges) => {
 
   // getting the topological sort of the given graph
   const stack = [];
-  const dfs = (node) => {
+  const dfs = node => {
     visited[node] = true;
     for (const [neighbor, cost] of graph.get(node) || []) {
       if (!visited[neighbor]) {
@@ -105,11 +105,11 @@ const shortestPathV2 = (V, E, edges) => {
     }
   }
 
-
   // topological sort will be reverse of the stack
   while (stack.length > 0) {
     const node = stack.pop();
-    if (distArr[node] !== Infinity) { // check if the current distance of the node is Infinity, if yes, avoid 
+    if (distArr[node] !== Infinity) {
+      // check if the current distance of the node is Infinity, if yes, avoid
       for (const [neighbor, cost] of graph.get(node) || []) {
         if (distArr[neighbor] > distArr[node] + cost) {
           distArr[neighbor] = distArr[node] + cost;

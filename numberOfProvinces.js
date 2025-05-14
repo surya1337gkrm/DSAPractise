@@ -20,7 +20,7 @@ var findCircleNum = function (isConnected) {
 
   const vertices = isConnected.length;
 
-  const dfs = (node) => {
+  const dfs = node => {
     if (visited.has(node)) return;
     visited.add(node);
 

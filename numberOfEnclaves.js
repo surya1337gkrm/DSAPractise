@@ -77,6 +77,5 @@ const grid2 = [
   [0, 0, 0, 0],
 ];
 
-
-console.log(numEnclaves(grid1)); 
+console.log(numEnclaves(grid1));
 console.log(numEnclaves(grid2));

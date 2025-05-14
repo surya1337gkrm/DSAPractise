@@ -12,7 +12,7 @@ var eventualSafeNodes = function (graph) {
   const visited = new Array(graph.length).fill(0);
   const safeNodes = [];
 
-  const isSafe = (node) => {
+  const isSafe = node => {
     // a node is considered safe when all its children nodes are visited without detecting a cycle
     if (visited[node] === 1) return false;
     if (visited[node] === 2) return true; // if all child nodes are visited
@@ -36,7 +36,7 @@ var eventualSafeNodes = function (graph) {
     // }
     // or if we call dfs sequentially for all nodes and handle pushing to safeNodes based of dfs return value
     // all the values will be in sorted order by default.
-    if(isSafe(i)) safeNodes.push(i)
+    if (isSafe(i)) safeNodes.push(i);
   }
 
   return safeNodes;
@@ -45,4 +45,6 @@ var eventualSafeNodes = function (graph) {
 console.log(
   eventualSafeNodes((graph = [[1, 2], [2, 3], [5], [0], [5], [], []]))
 );
-console.log(eventualSafeNodes(graph = [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]));
+console.log(
+  eventualSafeNodes((graph = [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]))
+);

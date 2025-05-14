@@ -7,7 +7,7 @@ var minimumMultiplications = (arr, start, end) => {
   //end = end % 100000;
   queue.push([0, start]);
 
-  const minStepsArr = new Array(end+1).fill(Infinity);
+  const minStepsArr = new Array(end + 1).fill(Infinity);
   minStepsArr[start] = 0;
 
   while (queue.length > 0) {
@@ -29,5 +29,7 @@ var minimumMultiplications = (arr, start, end) => {
 
   return -1;
 };
-console.log(minimumMultiplications(arr = [2, 5, 7],start = 3, end = 30))
-console.log(minimumMultiplications(arr= [3, 4, 65],start = 7, end = 66175))
+console.log(minimumMultiplications((arr = [2, 5, 7]), (start = 3), (end = 30)));
+console.log(
+  minimumMultiplications((arr = [3, 4, 65]), (start = 7), (end = 66175))
+);

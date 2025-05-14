@@ -32,7 +32,7 @@ const isCycle = (V, edges) => {
   // as it is a undirected graph : a->b and b->a exists.
   // if yes, then there is a cycle in the graph.[ i.e, if the node is already visited but the current parent isn't neighbor node]
 
-  const bfs = (src) => {
+  const bfs = src => {
     // first the startNode, add the parent value as -1
     const queue = [[src, -1]];
     while (queue.length > 0) {

@@ -2,7 +2,7 @@
 // Neetcode: https://neetcode.io/problems/foreign-dictionary
 // GFG: https://www.geeksforgeeks.org/problems/alien-dictionary/1
 
-var foreignDictionary = (words) => {
+var foreignDictionary = words => {
   // Approach: We use a graph to represent the relationships between the words
   // and then we perform topological sort to get the order of the words
   const graph = new Map();

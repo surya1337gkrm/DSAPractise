@@ -194,9 +194,9 @@ console.log(
   )
 );
 console.log(
-    findLadders(
-      (beginWord = 'hit'),
-      (endWord = 'cog'),
-      (wordList = ['hot', 'dot', 'dog', 'lot', 'log'])
-    )
-  );
+  findLadders(
+    (beginWord = 'hit'),
+    (endWord = 'cog'),
+    (wordList = ['hot', 'dot', 'dog', 'lot', 'log'])
+  )
+);

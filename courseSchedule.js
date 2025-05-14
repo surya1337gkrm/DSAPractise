@@ -25,7 +25,7 @@ var canFinish = function (numCourses, prerequisites) {
   // takes each node and check if its already visited
   // if a node is already visited, then it means there's a cycle in the graph
   // and if the node exploration is completed(all neighbors visited), then we can skip
-  const dfs = (node) => {
+  const dfs = node => {
     if (visited[node] === 1) return true;
     if (visited[node] === 2) return false;
 
@@ -70,7 +70,7 @@ var canFinish_withBFS = (numCourses, prerequisites) => {
     if (!graph.has(a)) graph.set(a, []);
     if (!graph.has(b)) graph.set(b, []);
 
-    graph.get(b).push(a); // a has dependency on  b | b->a 
+    graph.get(b).push(a); // a has dependency on  b | b->a
     inDegree[a]++; // a has incoming edge
   }
 

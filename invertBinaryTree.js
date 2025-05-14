@@ -26,7 +26,7 @@ var invertTree = function (root) {
   }
 
   // swap the left & right child nodes
-  [root.right, root.left] = [root.left, root.right ];
+  [root.right, root.left] = [root.left, root.right];
 
   // call invertTree fn recursively for each child node
 

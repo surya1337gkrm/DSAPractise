@@ -8,7 +8,7 @@
  */
 
 // Simillar to counting the numberOfIslands
-var numberofDistinctIslands = (grid) => {
+var numberofDistinctIslands = grid => {
   // Approach: We iterate through the grid and whenever a land cell(1) found, start dfs
   // along with the cell x,y value pass the base row & base col value as well which
   // will be used later to determine the unique islands

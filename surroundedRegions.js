@@ -70,4 +70,4 @@ const input1 = [
 solve(input1);
 
 const input2 = [['X']];
-solve(input2)
+solve(input2);

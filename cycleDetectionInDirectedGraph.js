@@ -27,7 +27,7 @@ var isCyclic = (V, edges) => {
 
   // in dfs we keep traversing through the graph depth-wise and continues until there's no child for the node
   // but if we visited the same node again which is marked as visited(but not completed), that means there's a cycle.
-  const dfs = (i) => {
+  const dfs = i => {
     if (visited[i] === 1) return true;
     if (visited[i] === 2) return false;
     visited[i] = 1;

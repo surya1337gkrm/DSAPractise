@@ -28,7 +28,7 @@ var isBipartite = function (graph) {
   // keep an array(grouped) to mark all the vertices when grouped.
   const grouped = new Array(vertices).fill(-1); // -1: ungrouped,0,1:grouped [ group 0 & group 1]
 
-  const bfs = (node) => {
+  const bfs = node => {
     const queue = [node];
     grouped[node] = 0; // start with 0
     let index = 0; // use this to pop the first item of the queue
@@ -69,7 +69,7 @@ var isBipartite = function (graph) {
     // we can either use bfs/dfs for this
     if (grouped[i] === -1) {
       //   if (bfs(i) === false) return false; // using bfs
-      if (dfs(i, 0) === false) return false // using dfs
+      if (dfs(i, 0) === false) return false; // using dfs
     }
   }
   return true;

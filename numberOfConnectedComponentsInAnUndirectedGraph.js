@@ -32,7 +32,7 @@ const countComponents = (n, edges) => {
     graph[b].push(a);
   }
 
-  const dfs = (node) => {
+  const dfs = node => {
     if (visited.has(node)) return;
     visited.add(node);
 
@@ -60,5 +60,13 @@ const countComponents = (n, edges) => {
   return components;
 };
 
-
-console.log("Count of Components: ",countComponents(n=3,edges=[[0,1], [0,2]]))
+console.log(
+  'Count of Components: ',
+  countComponents(
+    (n = 3),
+    (edges = [
+      [0, 1],
+      [0, 2],
+    ])
+  )
+);

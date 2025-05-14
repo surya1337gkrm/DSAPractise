@@ -28,7 +28,7 @@ var topoSort = (V, edges) => {
     graph[a].push(b);
   }
 
-  const dfs = (node) => {
+  const dfs = node => {
     visited[node] = true;
     for (let neighbor of graph[node] || []) {
       if (!visited[neighbor]) {

@@ -72,7 +72,7 @@ console.log(updateMatrix(testInput));
 console.log(updateMatrix(testInput2));
 
 // Option 02: modify the given matrix directly
-const updateMatrixV2 = (mat) => {
+const updateMatrixV2 = mat => {
   const rows = mat.length;
   const cols = mat[0].length;
   const queue = [];
@@ -109,7 +109,7 @@ const updateMatrixV2 = (mat) => {
       }
     }
   }
-  return mat
+  return mat;
 };
-console.log("Modifying the mat: ",updateMatrixV2(testInput));
-console.log("Modifying the mat: ",updateMatrixV2(testInput2));
+console.log('Modifying the mat: ', updateMatrixV2(testInput));
+console.log('Modifying the mat: ', updateMatrixV2(testInput2));

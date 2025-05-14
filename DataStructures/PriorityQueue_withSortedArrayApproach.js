@@ -12,7 +12,7 @@ class PriorityQueue {
     } else {
       let added = false;
       for (let i = 0; i < this.queue.length; i++) {
-        // if the inserted element priority is less than the current element priority, 
+        // if the inserted element priority is less than the current element priority,
         // we need to insert it at the correct position
         if (priority < this.queue[i].priority) {
           this.queue.splice(i, 0, node);
@@ -40,7 +40,7 @@ pq.enqueue(15, 1);
 pq.enqueue(15, 2);
 pq.enqueue(25, 3);
 pq.printQueue();
-console.log(pq.dequeue())
-pq.enqueue(40,1)
-console.log(pq.dequeue())
-pq.printQueue()
+console.log(pq.dequeue());
+pq.enqueue(40, 1);
+console.log(pq.dequeue());
+pq.printQueue();

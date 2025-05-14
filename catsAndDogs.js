@@ -1,4 +1,4 @@
-const catsAndBoots = (n) => {
+const catsAndBoots = n => {
   const output = [];
   for (const i = 1; i <= n; i++) {
     let res = '';

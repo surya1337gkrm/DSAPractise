@@ -22,7 +22,7 @@ var isBalanced = function (root) {
   if (!root) return false;
 
   // define the helper function to get the height of node in the tree
-  const getHeightOfNode = (node) => {
+  const getHeightOfNode = node => {
     // height of the leaf nodes/empty tree: 0
     if (!node) return 0;
 

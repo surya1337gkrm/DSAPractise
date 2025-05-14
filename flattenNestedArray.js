@@ -8,7 +8,7 @@ const input = [
   ['cherry', 'pears', ['mangoes', 'pineapple']],
   'date',
 ];
-const flattenArrayWithRecursion = (arr) => {
+const flattenArrayWithRecursion = arr => {
   if (
     arr === null ||
     arr === undefined ||
@@ -19,7 +19,7 @@ const flattenArrayWithRecursion = (arr) => {
 
   const output = [];
 
-  const flat = (item) => {
+  const flat = item => {
     if (Array.isArray(item)) {
       for (let i = 0; i < item.length; i++) {
         flat(item[i]);
@@ -34,7 +34,7 @@ const flattenArrayWithRecursion = (arr) => {
 
 console.log(flattenArrayWithRecursion(input));
 
-const flattenArrayWithoutRecursion = (arr) => {
+const flattenArrayWithoutRecursion = arr => {
   if (
     arr === null ||
     arr === undefined ||
@@ -57,7 +57,7 @@ const flattenArrayWithoutRecursion = (arr) => {
       output.push(current);
     }
   }
-  return output
+  return output;
 };
 
 console.log('Without recursion: ', flattenArrayWithoutRecursion(input));
