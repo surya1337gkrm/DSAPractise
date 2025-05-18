@@ -101,6 +101,7 @@ var spanningTree = (v, adj) => {
 
   while (pq.size() > 0 && mst.length < v) {
     // mst.length<v isnt necessary but helps in skipping the unnecessary iterations
+    // this is useful only when we are storing the edges - if we just have to update the cost then this is not required
     const { startNode, endNode, weight } = pq.dequeue();
     if (visited[endNode]) continue; // if the node is already visited, skip it
 
