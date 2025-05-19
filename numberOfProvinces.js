@@ -58,3 +58,57 @@ console.log(
     ])
   )
 );
+
+// Approach 02: We can use Disjoint Set to solve this problem.
+// Check for each edge in the grid, if both nodes belong to the same component
+// i.e, have same root parent node. if not, then union the two nodes.
+// For each component: there will be a unique root node
+// By the end, number of unique root/parent elements will be the count of components
+
+class DisjointSet {
+  constructor(n) {
+    this.parent = Array.from({ length: n }, (_, i) => i);
+    this.rank = new Array(n).fill(0);
+  }
+
+  findRootParent(i) {
+    if (i === this.parent[i]) return i;
+    const parent = this.findRootParent(this.parent[i]);
+    this.parent[i] = parent;
+    return parent;
+  }
+
+  unionByRank(u, v) {
+    const rootU = this.findRootParent(u);
+    const rootV = this.findRootParent(v);
+
+    if (rootU === rootV) return;
+    if (this.rank[rootU] < this.rank[rootV]) {
+      this.parent[rootU] = rootV;
+    } else if (this.rank[rootV] < this.rank[rootU]) {
+      this.parent[rootV] = rootU;
+    } else {
+      this.parent[rootV] = rootU;
+      this.rank[rootU]++;
+    }
+  }
+}
+
+var findCircleNumV2 = isConnected => {
+  const nodes = isConnected.length;
+  const ds = new DisjointSet(nodes);
+
+  for (let i = 0; i < nodes; i++) {
+    for (let j = 0; j < nodes; j++) {
+      if (
+        ds.findRootParent(i) !== ds.findRootParent(j) &&
+        isConnected[i][j] === 1
+      ) {
+        ds.unionByRank(i, j);
+      }
+    }
+  }
+
+  // count the unique root elements in the parent array
+  return new Set(ds.parent).size;
+};
