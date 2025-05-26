@@ -67,7 +67,7 @@ console.log(
 );
 
 console.log(removeStones((stones = [[0, 0]])));
-console.log('--------------------')
+console.log('--------------------');
 class DisjointSet {
   // as we dont know how many edges
   constructor(n) {
@@ -149,8 +149,7 @@ console.log(
 );
 
 console.log(removeStonesV2((stones = [[0, 0]])));
-console.log('--------------------')
-
+console.log('--------------------');
 
 // Problem with Approach 02:
 // We are using fixed length array which is not efficient for large number of rows and columns.
