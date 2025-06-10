@@ -50,7 +50,7 @@ var lengthOfLongestSubstringV2 = function (s) {
     if (map[s[r]] !== undefined) {
       // when the character is already present in the map, its repeated
       // so we need to move the left pointer to the index of the character + 1
-      // first occurance of the character is greater than the left pointer, so we need to shift the left pointer 
+      // first occurance of the character is greater than the left pointer, so we need to shift the left pointer
       // to the next index of the first occurance of the character
       if (map[s[r]] + 1 > l) l = map[s[r]] + 1;
     }

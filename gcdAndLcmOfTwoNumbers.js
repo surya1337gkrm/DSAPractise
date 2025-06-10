@@ -12,4 +12,4 @@ const lcm = (a, b) => {
   return (a * b) / gcd(a, b);
 };
 
-console.log(lcm(12,18))
+console.log(lcm(12, 18));
