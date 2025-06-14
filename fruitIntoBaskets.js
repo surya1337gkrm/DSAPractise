@@ -58,3 +58,36 @@ var totalFruitV2 = function (fruits) {
 console.log(totalFruitV2((fruits = [1, 2, 1])));
 console.log(totalFruitV2((fruits = [0, 1, 2, 2])));
 console.log(totalFruitV2((fruits = [1, 2, 3, 2, 2])));
+
+
+// Approach 03: Slightly better approach than V2
+// we used map to store unique fruit types and the count.
+// whenever map size>2, we are using a inner while loop which adds a little to the tc
+// i.e, r takes n steps and whenever max size>2, l takes few steps until max size<=2 
+// at the worse case, l has to take n-1 steps as well adding O(n) to the tc
+// Overall TC: O(2N)
+// To reduce this, we can only shrink the window only once when max size>2
+var totalFruitV3 = function (fruits) {
+  let l = 0,
+    r = 0,
+    max = 0;
+  let map = new Map();
+
+  while (r < fruits.length) {
+    // check if map has the current fruit type, if yes increment the count value
+    // else add the fruit type as key and initiate count value as 1
+    map.set(fruits[r], (map.get(fruits[r]) || 0) + 1);
+    if (map.size > 2) {
+      map.set(fruits[l], map.get(fruits[l]) - 1);
+      if (map.get(fruits[l]) === 0) map.delete(fruits[l]);
+      l++;
+    }
+
+    max = Math.max(max, r - l + 1);
+    r++;
+  }
+  return max;
+};
+console.log(totalFruitV3((fruits = [1, 2, 1])));
+console.log(totalFruitV3((fruits = [0, 1, 2, 2])));
+console.log(totalFruitV3((fruits = [1, 2, 3, 2, 2])));
