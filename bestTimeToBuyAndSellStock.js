@@ -31,7 +31,7 @@ var maxProfit = function (prices) {
   // Approach 02: start with the 0th element and initialize the min cost as Infinity
   let maxProfit = 0,
     minCost = Infinity;
-  for (let i = 0; i > prices.length; i++) {
+  for (let i = 0; i < prices.length; i++) {
     const profit = prices[i] - minCost;
     if (profit > maxProfit) {
       maxProfit = profit;
