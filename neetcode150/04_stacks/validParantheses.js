@@ -25,3 +25,13 @@ var isValid = function (s) {
   }
   return stack.length === 0;
 };
+
+
+const testCases =[
+    '()',
+    '()[]{}',
+    '(]',
+    '([)]',
+    '{[]}',
+];
+testCases.forEach(testCase => console.log(isValid(testCase)));
