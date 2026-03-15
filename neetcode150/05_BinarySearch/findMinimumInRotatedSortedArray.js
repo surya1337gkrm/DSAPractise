@@ -19,13 +19,13 @@ var findMin = function (nums) {
       // as we have to check for the min element, we can ignore l to mid
       // there can be a min element in the right half
       l = mid + 1;
-    }else{
-        // right subarray is sorted
-        // so mid is the min element
-        min = Math.min(min, nums[mid]);
-        // as we have to check for the min element, we can ignore mid to r
-        r = mid - 1;
+    } else {
+      // right subarray is sorted
+      // so mid is the min element
+      min = Math.min(min, nums[mid]);
+      // as we have to check for the min element, we can ignore mid to r
+      r = mid - 1;
     }
   }
-  return min
+  return min;
 };
